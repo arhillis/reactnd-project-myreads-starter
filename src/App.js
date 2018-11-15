@@ -1,5 +1,5 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelves from './components/BookShelves'
 
@@ -14,6 +14,20 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
 
+  componentDidMount = () => {
+    if(this.state.newBook){
+      this.refreshAllBooks()
+    }
+  }
+
+  refreshAllBooks = () => {
+    BooksAPI.getAll().then((list) => {
+      this.setState({
+        books: list,
+        newBook: false
+      });
+    });
+  }
   render() {
     return (
       <div className="app">
@@ -43,7 +57,7 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-            <BookShelves />
+            <BookShelves books={this.state.books} onRefreshAllBooks={this.refreshAllBooks}/>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
