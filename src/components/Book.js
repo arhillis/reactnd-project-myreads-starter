@@ -3,7 +3,6 @@ import React from 'react'
 class Book extends React.Component{
     render(){
         let book = this.props.book
-        console.log(book)
         return (
             <li>
                 <div className="book" key={book.title}>
