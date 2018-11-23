@@ -11,14 +11,17 @@ class Bookshelves extends React.Component{
         let shelves =  {
             currentlyReading: {
                 name: 'Currently Reading',
+                key: 'currentlyReading',
                 books: this.props.books.filter(book => book.shelf === 'currentlyReading')
             },
             wantToRead: {
                 name: 'Want to Read',
+                key: 'wantToRead',
                 books: this.props.books.filter(book => book.shelf === 'wantToRead')
             },
             read: {
                 name: 'Read',
+                key: 'read',
                 books: this.props.books.filter(book => book.shelf === 'read')
             }
         }
@@ -33,9 +36,9 @@ class Bookshelves extends React.Component{
         return (
                 <div className="list-books-content">
                 <div>
-                    <Shelf shelf={shelves.currentlyReading}/>
-                    <Shelf shelf={shelves.wantToRead} />
-                    <Shelf shelf={shelves.read} />
+                    <Shelf shelf={shelves.currentlyReading} onRefreshAllBooks={this.props.onRefreshAllBooks} key="currentlyReading"/>
+                    <Shelf shelf={shelves.wantToRead} onRefreshAllBooks={this.props.onRefreshAllBooks} key="wantToRead"/>
+                    <Shelf shelf={shelves.read} onRefreshAllBooks={this.props.onRefreshAllBooks} key="read"/>
                 </div>
                 
                 </div>
