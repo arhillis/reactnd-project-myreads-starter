@@ -1,4 +1,5 @@
 import React from 'react'
+import Shelf from './Shelf'
 
 class Bookshelves extends React.Component{
     state = {}
@@ -25,14 +26,16 @@ class Bookshelves extends React.Component{
     }
     render(){  
         let shelves = {}
-        if(this.props.books && this.props.books.length)
-            shelves = this.updateShelves()
-        console.log(shelves)
-            return (
+        if(this.props.books && this.props.books.length){
+            shelves = this.updateShelves() 
+        }
+               
+        return (
                 <div className="list-books-content">
                 <div>
+                    <Shelf header="shelf comming soon" shelf={shelves.currentlyReading}/>
+                </div>
                 {
-                    <p>More comming soon...</p>
                     /*
                     <div className="bookshelf">
                     <h2 className="bookshelf-title">Currently Reading</h2>
@@ -181,8 +184,7 @@ class Bookshelves extends React.Component{
                         </ol>
                     </div>
                     </div>
-                    */}
-                </div>
+                */}
                 
                 </div>
             )
