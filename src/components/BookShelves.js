@@ -33,7 +33,7 @@ class Bookshelves extends React.Component{
         return (
                 <div className="list-books-content">
                 <div>
-                    <Shelf header="shelf comming soon" shelf={shelves.currentlyReading}/>
+                    <Shelf shelf={shelves.currentlyReading}/>
                 </div>
                 {
                     /*
